@@ -1,103 +1,139 @@
-# Data Modeling and Database Design System
+# Data Quality and Query Correction System using Multi-Method Approaches
 
-A structured data modeling project that designs and implements a relational database system using entity-relationship modeling, normalization, and SQL-based querying.
+A data-driven system that detects and corrects query inconsistencies using multiple approaches including rule-based methods, embedding models, and LLM-based techniques.
 
 ---
 
 ##  Overview
 
-This project focuses on designing a robust database system by identifying entities, defining relationships, and implementing an efficient relational schema.
+Real-world datasets often contain inconsistencies such as:
 
-The goal is to ensure:
+* Synonym mismatches
+* Logical errors
+* Ambiguous queries
 
-* Data integrity
-* Efficient querying
-* Scalable database design
+This project builds a system to:
 
----
-
-##  Key Concepts
-
-* Entity-Relationship (ER) Modeling
-* Relational Schema Design
-* Normalization (1NF, 2NF, 3NF)
-* SQL Query Design
-* Data Integrity Constraints
+* Generate synthetic datasets with controlled errors
+* Apply multiple correction techniques
+* Compare performance across methods
 
 ---
 
-##  System Design
+##  Key Features
 
-The system models real-world entities and their relationships, converting them into a normalized relational schema.
+* Synthetic data generation pipeline
+* Multiple correction approaches:
 
----
-
-##  ER Diagram
-
-![ER Diagram](schema/er_diagram.png)
-
----
-
-## ⚙️ Implementation
-
-* Designed relational schema using normalized tables
-* Implemented SQL queries for data retrieval
-* Ensured integrity using constraints and relationships
+  * Rule-based
+  * Advanced rule-based
+  * Embedding-based
+  * LLM-based
+* Comparative analysis of methods
+* Image + CSV dataset handling
 
 ---
 
-##  Example Queries
+##  Project Structure
 
-```sql
-SELECT * FROM Airport;
-SELECT name, location FROM Flights WHERE status = 'Active';
+```plaintext
+data/        → datasets and images  
+src/         → data generation pipeline  
+methods/     → 4 different correction approaches  
+results/     → outputs and evaluation  
+docs/        → project report  
 ```
 
 ---
 
-##  How to Run
+##  Methodology
 
-1. Import schema:
+### 1. Data Generation
 
-```bash
-source schema/relational_schema.sql
-```
+* Created datasets with controlled variations:
 
-2. Load data:
+  * Perfect data
+  * Synonym-based errors
+  * Logical inconsistencies
 
-```bash
-LOAD DATA INFILE 'data/sample_data.csv';
-```
+### 2. Query Correction Methods
 
-3. Run queries:
+#### Rule-Based
 
-```bash
-source queries/queries.sql
-```
+* Uses predefined rules for correction
+
+#### Advanced Rule-Based
+
+* Handles complex variations and patterns
+
+#### Embedding-Based
+
+* Uses semantic similarity for correction
+
+#### LLM-Based
+
+* Uses language models for intelligent query correction
 
 ---
 
-##  Tech Stack
+##  Datasets
 
-* SQL
-* Relational Databases
-* CSV Data
+* Dataset A → Perfect data
+* Dataset B → Synonym variations
+* Dataset C → Logical errors
+
+---
+
+##  Observations
+
+* Rule-based methods are fast but limited
+* Embedding-based methods improve semantic understanding
+* LLM-based approaches provide highest flexibility
+* Trade-off between accuracy and computational cost
 
 ---
 
 ##  Design Trade-offs
 
-* Normalization improves integrity but may increase query complexity
-* Denormalization can improve performance but risks redundancy
+| Method        | Strength        | Limitation      |
+| ------------- | --------------- | --------------- |
+| Rule-Based    | Fast            | Rigid           |
+| Advanced Rule | Better coverage | Complex rules   |
+| Embedding     | Semantic        | Requires tuning |
+| LLM           | Flexible        | Expensive       |
+
+---
+
+##  How to Run
+
+1. Generate data:
+
+```bash
+python src/data_generation/data_generator_local.py
+```
+
+2. Run methods:
+
+* Open notebooks in `methods/`
+* Execute cells step-by-step
+
+---
+
+## 🛠️ Tech Stack
+
+* Python
+* Pandas / NumPy
+* NLP techniques
+* Jupyter Notebooks
 
 ---
 
 ##  Applications
 
-* Airline systems
-* Inventory management
-* Enterprise data systems
-* Analytics pipelines
+* Data cleaning pipelines
+* Query correction systems
+* NLP preprocessing
+* Intelligent search systems
 
 ---
 
